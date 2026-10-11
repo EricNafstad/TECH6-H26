@@ -34,6 +34,18 @@ include hundreds of pre-installed packages, resulting in a much faster and small
     - **Linux**: Download the `.sh` installer script for your architecture and run `bash Miniforge3-Linux-*.sh` in the terminal.
 2. Accept the default options during installation.
 
+## Updating an existing installation
+
+If you already have Conda (Anaconda or Miniforge) installed, make sure your
+installation is up to date before creating the course environment.
+
+Open the Anaconda Prompt / Miniforge Prompt (Windows) or the terminal (macOS, Linux)
+and run:
+
+```bash
+conda update --all -n base
+```
+
 ## Creating a Conda environment
 
 -   The installation comes with a default environment called `base`.
@@ -85,3 +97,23 @@ If everything worked out, you should see the following message at the end of the
 #
 #     $ conda deactivate
 ```
+
+## Troubleshooting: PowerShell on Windows
+
+On Windows, PowerShell's default execution policy prevents scripts from running.
+When opening PowerShell or activating an environment in the VS Code terminal,
+PowerShell may report an error stating that `activate.ps1 cannot be loaded because
+running scripts is disabled on this system`.
+
+To allow Conda activation for your user account without requiring administrator
+privileges:
+
+1. Open PowerShell (or the VS Code terminal).
+2. Run the following command:
+   ```powershell
+   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+   ```
+3. Type `Y` (Yes) when prompted to confirm.
+
+This permits local scripts such as Conda activation to run while requiring
+downloaded scripts to be signed by a trusted publisher.
