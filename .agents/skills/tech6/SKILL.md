@@ -365,7 +365,21 @@ The `TECH6` environment includes:
 - **`ModuleNotFoundError` despite package installation**:
   - Environment mismatch. Verify that the active terminal prompt shows `(TECH6)`
     and matches the selected VS Code interpreter or Jupyter kernel.
+- **Jupyter kernel crashes on Windows when running plotting cells (Miniforge)**:
+  - Cause: Miniforge does not register in the Windows Registry, so VS Code fails
+    to locate `conda.exe` and attaches the Python interpreter without environment
+    activation. Missing `PATH` entries for native plotting dependencies cause
+    the crash. Anaconda installations are typically unaffected.
+  - Fix 1 (recommended): Set `python.condaPath` in VS Code settings (`Ctrl+,`)
+    to the full path of `conda.exe` (found via
+    `for /f "delims=" %i in ('conda info --base') do @echo %i\Scripts\conda.exe`
+    in Miniforge Prompt).
+  - Fix 2: Launch VS Code from an activated Miniforge Prompt (`conda activate TECH6`
+    then `code`).
+  - Fix 3: Reinstall Miniforge, checking "Add Miniforge3 to my PATH environment
+    variable for your user installation", then recreate the `TECH6` environment.
 - **Identifying Active Environment**:
   - Run `conda env list`; the active environment is marked with an asterisk `*`.
+
 
 

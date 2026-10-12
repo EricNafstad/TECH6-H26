@@ -59,9 +59,73 @@ application.
 4. Requires the `ipykernel` package in the active environment (already included in
    the `TECH6` environment).
 
+### Windows: Kernel crashes when plotting in Jupyter notebooks (Miniforge)
+
+On Windows, selecting a Miniforge environment kernel in VS Code may attach the
+Python interpreter without activating the environment. Because Miniforge does
+not register in the Windows Registry, VS Code cannot locate `conda.exe`
+automatically to run activation scripts. When executing cells that import
+plotting libraries (such as `matplotlib`), missing `PATH` entries for native
+dependencies cause the kernel to crash silently ("The kernel died"). Anaconda
+users are typically unaffected because Anaconda registers standard system
+paths during installation.
+
+To verify whether your setup is affected, run a cell with:
+
+```python
+import matplotlib.pyplot as plt
+
+plt.plot([1, 2], [1, 2])
+plt.show()
+```
+
+If the kernel crashes, apply one of the following fixes:
+
+#### Option 1: Set the Conda path in VS Code settings (recommended)
+
+1. Open **Miniforge Prompt** (or **Anaconda Prompt**) from the Start menu.
+2. Run the following command to print the path to `conda.exe`:
+   ```cmd
+   for /f "delims=" %i in ('conda info --base') do @echo %i\Scripts\conda.exe
+   ```
+   This prints a path such as:
+   ```text
+   C:\Users\<username>\AppData\Local\miniforge3\Scripts\conda.exe
+   ```
+3. Copy the output.
+4. In VS Code, open Settings (**File > Preferences > Settings** or `Ctrl+,`).
+5. Search for `python.condaPath`.
+6. Paste the full path into the setting.
+7. Restart VS Code.
+
+#### Option 2: Launch VS Code from an activated Miniforge Prompt
+
+If VS Code was added to `PATH` during installation:
+
+1. Save your work and close all VS Code windows.
+2. Open **Miniforge Prompt** from the Start menu.
+3. Run:
+   ```cmd
+   conda activate TECH6
+   code
+   ```
+Use this command each time you launch VS Code for the course.
+
+#### Option 3: Reinstall Miniforge and enable PATH
+
+1. Save your work and close VS Code.
+2. Uninstall Miniforge, then reinstall it using the Windows installer.
+3. During installation, check
+   **Add Miniforge3 to my PATH environment variable for your user installation**.
+4. Open a new Miniforge Prompt and recreate the `TECH6` environment:
+   ```cmd
+   conda env create -f environment.yml
+   ```
+
 ## Python integration
 
 - Read the Python-specific
   [quick start guide](https://code.visualstudio.com/docs/python/python-quick-start).
 - VS Code comes with numerous useful Python extensions. You will be asked to install
   them when you open Python files or Jupyter notebooks for the first time.
+
