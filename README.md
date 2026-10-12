@@ -5,13 +5,13 @@
 Course material for fall 2026 (H26) — Author: Richard Foltyn
 
 
-## **Preliminary** course outline for part 2
+## Course outline for part 2 [[Syllabus](lectures/lecture1/syllabus.pdf)]
 
 `L` = Lecture, `W` = Workshop
 
 | Week | Day         | L/W | Topic | Notes & Exercises | Solutions |
 |------|-------------|-----|-------|-------------------|-----------|
-|  42  | Tue, Oct 13 | `L` | Introduction to scikit-learn | [Slides](lectures/lecture1/lecture1-slides.pdf), [Notebook](lectures/lecture1/lecture1.ipynb), [PDF](lectures/lecture1/lecture1.pdf) | — |
+|  42  | Tue, Oct 13 | `L` | Introduction to scikit-learn | [Notebook](lectures/lecture1/lecture1.ipynb), [PDF](lectures/lecture1/lecture1.pdf) | — |
 |      | Thu, Oct 15 | `W` | Introduction to scikit-learn | [Notebook](workshops/workshop1/workshop1.ipynb), [PDF](workshops/workshop1/workshop1.pdf) | TBA |
 |  43  | Tue, Oct 20 | `L` | Cross-validation and model selection | [Notebook](lectures/lecture2/lecture2.ipynb), [PDF](lectures/lecture2/lecture2.pdf) | — |
 |      | Thu, Oct 22 | `W` | Cross-validation and model selection | [Notebook](workshops/workshop2/workshop2.ipynb), [PDF](workshops/workshop2/workshop2.pdf) | TBA |
@@ -19,8 +19,6 @@ Course material for fall 2026 (H26) — Author: Richard Foltyn
 |      | Thu, Oct 29 | `W` | Regression models | [Notebook](workshops/workshop3/workshop3.ipynb), [PDF](workshops/workshop3/workshop3.pdf) | TBA |
 |  45  | Tue, Nov 3  | `L` | Classification models | [Notebook](lectures/lecture4/lecture4.ipynb), [PDF](lectures/lecture4/lecture4.pdf) | — |
 |      | Thu, Nov 5  | `W` | Classification models | [Notebook](workshops/workshop4/workshop4.ipynb), [PDF](workshops/workshop4/workshop4.pdf) | TBA |
-
-**Note:** The final schedule will be announced at the beginning of part 2.
 
 
 ## Cloning & forking the repository
