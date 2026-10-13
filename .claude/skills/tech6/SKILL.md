@@ -41,10 +41,14 @@ You should operate in two different modes, depending on the student request:
   - All required Python packages are included in `environment.yml`. Under no
     circumstances should you instruct students to install required course packages
     separately using `pip`.
+- The NHH remote desktop VM is only available to students who requested access
+  ex ante. Do not suggest or redirect students to the remote desktop when they
+  encounter local installation issues. Only provide remote desktop guidance if
+  the student explicitly asks about it and has been granted access.
 - At the beginning of every installation or repair conversation, ask which
-  software or tool they have issues with (Conda, Git, VS Code, or the `TECH6`
-  environment). Do not show the installation steps for all software tools at once,
-  but one at a time.
+  software or tool they have issues with (Conda, Git, VS Code, the `TECH6`
+  environment, or the NHH remote desktop VM for students with access). Do not show
+  the installation steps for all software tools at once, but one at a time.
 - If the student is only getting started and has not installed anything yet, guide
   them through each individual software installation one at a time, in the order
   given above.
@@ -86,6 +90,8 @@ macOS, and Linux for TECH6.
   or the Python distribution shipped with the operating system (macOS and Linux).
   Miniforge is a lightweight Conda installer configuring `conda-forge` as its
   default channel.
+- **NHH Remote Desktop (VM)**: Windows virtual desktop environment provided by NHH
+  via Omnissa Horizon for students who requested access in advance.
 
 ---
 
@@ -325,7 +331,41 @@ The `TECH6` environment includes:
 
 ---
 
-## 5. Summary Verification Checklist
+## 5. NHH Remote Desktop (Virtual Machine)
+
+Access to the virtual desktop is restricted to students who requested it in
+advance. For those students, NHH provides a Windows virtual desktop infrastructure
+(VDI) running Omnissa Horizon (formerly VMware Horizon) with preconfigured course
+software.
+
+- Entry point: [https://desktop.nhh.no](https://desktop.nhh.no)
+
+### Native Client vs. Web Client
+- **Native client (recommended)**: Install the native Omnissa Horizon Client for
+  lower latency, multi-monitor support, and system shortcut forwarding (`Ctrl+C`,
+  `Alt+Tab`).
+  - Supported OS: Windows 10/11, macOS (Apple Silicon and Intel), Linux (Ubuntu and
+    RHEL on X11).
+  - Download page:
+    [Omnissa Horizon Clients](https://customerconnect.omnissa.com/downloads/info/slug/desktop_end_user_computing/omnissa_horizon_clients/8)
+- **Web client (browser fallback)**: Accessible directly at
+  [https://desktop.nhh.no](https://desktop.nhh.no) by selecting **Omnissa Horizon Web
+  Client**. Runs in any modern browser without local installation, but has reduced
+  performance and browser shortcut conflicts.
+
+### Connecting via Native Client
+1. Install Omnissa Horizon Client for your OS and launch the application.
+2. Click **New Server** (or **Add Server**) and enter `desktop.nhh.no`.
+3. Sign in with your NHH email and password, then approve Microsoft MFA.
+4. Double-click the assigned desktop pool (student desktop) to connect.
+
+### Saving Work
+VM sessions are ephemeral or separate from local storage. Always save work
+externally by pushing git commits to GitHub or saving files to NHH OneDrive.
+
+---
+
+## 6. Summary Verification Checklist
 
 | # | Tool | Verification Method | Expected Outcome |
 |---|---|---|---|
@@ -333,10 +373,11 @@ The `TECH6` environment includes:
 | 2 | Git | Run `git --version` in Git Bash (Windows) or Terminal (macOS/Linux) | Version number displayed (e.g., `git version 2.43.0`) |
 | 3 | Conda | Run `conda --version` in Miniforge/Anaconda Prompt (Windows) or Terminal (macOS/Linux) | Version number displayed |
 | 4 | TECH6 Env | Run `conda activate TECH6` then `python --version` | `Python 3.14.x` displayed; prompt shows `(TECH6)` |
+| 5 | Remote Desktop | Connect via Omnissa Horizon Client to desktop.nhh.no | Windows desktop session launches with course tools |
 
 ---
 
-## 6. Troubleshooting Guidance
+## 7. Troubleshooting Guidance
 - **`conda: command not found` or `'conda' is not recognized`**:
   - *Windows*: Use **Miniforge Prompt** or **Anaconda Prompt** from the Start Menu
     rather than standard Command Prompt or PowerShell.
@@ -380,6 +421,12 @@ The `TECH6` environment includes:
     variable for your user installation", then recreate the `TECH6` environment.
 - **Identifying Active Environment**:
   - Run `conda env list`; the active environment is marked with an asterisk `*`.
+- **Remote Desktop connection or login issues**:
+  - Verify server address is set to `desktop.nhh.no`.
+  - Sign in using your full NHH email (`@nhh.no` or `@student.nhh.no`) and complete
+    Microsoft MFA.
+  - If the native client fails, test access using the Web Client in a browser at
+    [https://desktop.nhh.no](https://desktop.nhh.no).
 
 
 

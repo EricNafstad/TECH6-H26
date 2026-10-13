@@ -6,6 +6,7 @@
 - [Installing & configuring git on **Windows**](git-install-windows.md)
 - [Installing & configuring git on **macOS**](git-install-macos.md)
 - [Installing Visual Studio Code](vscode-install.md)
+- [Connecting to the NHH remote desktop (VM)](remote-desktop.md)
 
 ## Command reference
 

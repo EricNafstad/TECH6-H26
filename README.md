@@ -65,7 +65,8 @@ conda env create -f environment.yml
 ## Guides
 
 See the [guides/](guides/README.md) folder for instructions on how to
-install Conda (Python), Visual Studio Code, and git version control.
+install Conda (Python), Visual Studio Code, and git version control, or how to
+connect to the NHH remote desktop virtual machine.
 
 
 ## Additional resources
